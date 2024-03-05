@@ -24,8 +24,9 @@ public class AppiumDriverFactory {
 	// Declaring constructor as private to restrict object creation outside of class
 	private AppiumDriverFactory() {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability("platformName", "android");
-		capabilities.setCapability("device", deviceName);
+		capabilities.setCapability("platformName", "Android");
+//		capabilities.setCapability("appium:device", deviceName);
+		capabilities.setCapability("deviceName", deviceName);
 		capabilities.setCapability("appPackage", appPackage);
 		capabilities.setCapability("appActivity", appActivity);
 		capabilities.setCapability("automationName", "UIAutomator2");

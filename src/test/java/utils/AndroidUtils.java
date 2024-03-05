@@ -23,7 +23,7 @@ private AppiumDriver driver;
 	
 
 	/**
-	 * Constructor to initialize the {@link WebDriverUtil} object
+	 * Constructor to initialize the {@link} object
 	 * 
 	 * @param driver The {@link AppiumDriver} object
 	 */
@@ -47,9 +47,9 @@ private AppiumDriver driver;
 	
 
 	
-	public Boolean objectExists(By by) {
+	public Boolean objectExists(By xpath) {
 		try {
-			if (driver.findElements(by).size() == 0) {
+			if (driver.findElements(xpath).size() == 0) {
 				return false;
 			} else {
 				return true;
@@ -60,14 +60,14 @@ private AppiumDriver driver;
 		}
 	}
 
-	public boolean enterValueInTextBox(String text, By by) {
+	public boolean enterValueInTextBox(By xpath, String text) {
 		boolean flag = false;
 		try {
-			if (driver.findElement(by).isDisplayed()) {
-				driver.findElement(by).click();
-				driver.findElement(by).clear();
-				driver.findElement(by).sendKeys(text);
-				//driver.hideKeyboard();
+			if (driver.findElement(xpath).isDisplayed()) {
+				driver.findElement(xpath).click();
+				driver.findElement(xpath).clear();
+//				driver.hideKeyboard();
+				driver.findElement(xpath).sendKeys(text);
 				flag = true;
 			}
 
@@ -76,6 +76,23 @@ private AppiumDriver driver;
 		}
 		return flag;
 	}
+
+	public boolean enterButtonAuto(By xpath) {
+		boolean flag = false;
+		try {
+			if (driver.findElement(xpath).isDisplayed()) {
+				driver.findElement(xpath).clear();
+				driver.findElement(xpath).sendKeys(Keys.ENTER);
+				flag = true;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return flag;
+	}
+
+
 
 	
 	/**
